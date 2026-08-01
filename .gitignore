@@ -10,4 +10,8 @@ venv/
 # Environment & local state
 .env
 .DS_Store
-transcripts/processed/
+
+# Transcripts: ignore all transcript files/subdirectories except sample_otter_interview.txt
+transcripts/*
+!transcripts/sample_otter_interview.txt
+
