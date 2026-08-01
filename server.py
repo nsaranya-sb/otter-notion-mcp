@@ -31,6 +31,8 @@ def list_unprocessed_transcripts(folder_path: str = "./transcripts") -> Dict[str
     for f in os.listdir(folder_path):
         full_path = os.path.join(folder_path, f)
         if os.path.isfile(full_path) and f.lower().endswith((".txt", ".docx", ".md")):
+            if f.lower() == "sample_otter_interview.txt":
+                continue  # Never process the sample transcript template
             unprocessed_files.append({
                 "filename": f,
                 "file_path": os.path.abspath(full_path),
