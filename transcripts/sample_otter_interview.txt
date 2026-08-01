@@ -1,0 +1,20 @@
+Candidate Technical Interview: Sarah Chen (Senior AI Engineer)
+Date: 2026-07-28
+
+Interviewer 00:02
+Welcome Sarah, thanks for joining us today. Could you give us a quick overview of your experience building production AI agents?
+
+Sarah Chen 00:15
+Thanks for having me! Over the past 3 years, I led the Agent Platform team at TechCorp. We built multi-tool MCP servers for compliance automation and automated document synthesis using FastMCP and Python.
+
+Interviewer 01:05
+That aligns well with what we are building. How do you handle risk-tiered approval for high-consequence operations like external write actions?
+
+Sarah Chen 01:25
+We implemented a two-phase confirmation protocol. Read-only and non-destructive tasks auto-run immediately, whereas destructive actions produce a batched proposal preview and require explicit human-in-the-loop approval before executing.
+
+Interviewer 02:10
+Great answer. What is your availability if we move forward to an offer?
+
+Sarah Chen 02:20
+I have a 2-week notice period and could start mid-August.
