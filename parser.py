@@ -30,14 +30,18 @@ def parse_transcript_file(file_path: str) -> Dict[str, Any]:
         with open(file_path, "r", encoding="utf-8", errors="replace") as f:
             raw_text = f.read()
 
-    lines = [line.strip() for line in raw_text.splitlines() if line.strip()]
+    lines = [line.strip().lstrip('\ufeff\u200b\u200c\u200d') for line in raw_text.splitlines() if line.strip()]
     filename = os.path.basename(file_path)
-
-    # Title detection: first non-empty line or file basename
-    title = lines[0] if lines else filename.replace(ext, "")
 
     # Speaker detection pattern: e.g. "Speaker 1 00:02" or "Raj 10:15"
     speaker_pattern = re.compile(r"^([A-Za-z0-9_\s\-\.\(\)]+)\s+(\d{1,2}:\d{2}(?::\d{2})?)$")
+
+    # Title detection: first non-empty line if not a speaker header, else clean filename
+    first_line = lines[0] if lines else ""
+    if first_line and not speaker_pattern.match(first_line):
+        title = first_line
+    else:
+        title = filename.rsplit(".", 1)[0].replace("_transcript", "")
 
     speakers = set()
     dialogue_blocks = []
